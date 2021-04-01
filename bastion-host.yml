@@ -33,6 +33,8 @@
               cidr_ip : "{{MYIP}}"
        register: bastionOutput
 
+
+
      - name: create bastion instance
        ec2:
          key_name: bastionHost
@@ -45,7 +47,7 @@
            Name: bastionhost
            Project: dev
          exact_count: 1
-         count_tags:
+         count_tag:
            Name: bastionhost
            Project: dev
          group_id: "{{bastionOutput.group_id}}"
