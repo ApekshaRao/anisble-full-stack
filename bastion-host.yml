@@ -42,13 +42,13 @@
          wait: yes
          wait_timeout: 300
          instance_tags:
-           name: bastionhost
-           env: dev
+           Name: bastionhost
+           Project: dev
          exact_count: 1
          count_tags:
-           name: bastionhost
-           env: dev
-         security_group: "{{bastionOutput.group_id}}"
+           Name: bastionhost
+           Project: dev
+         group_id: "{{bastionOutput.group_id}}"
          vpc_subnet_id: "{{public_ip}}"
        register: bastionInstance
 
