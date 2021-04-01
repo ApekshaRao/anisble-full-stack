@@ -38,7 +38,6 @@
          key: bastionHost
          region: "{{region}}"
          vpc_id: "{{vpcid}}"
-         vpc_subnet_id: "{{public_ip}}"
          image: "{{ami-bastion}}"
          instance_type: t2.micro
          wait: yes
@@ -51,6 +50,7 @@
            name: bastionhost
            env: dev
          security_group: "{{bastionOutput.group_id}}"
+         vpc_subnet_id: "{{public_ip}}"
        register: bastionInstance
 
 
