@@ -1,0 +1,60 @@
+---
+-- host: localhost
+   connection: local
+   gather_facts: no
+   tasks:
+     - name: import variable file for bastion host creation
+       import_variable: vars/bastion-var
+
+     - name: create ec2 key pair
+       ec2_key:
+         name: ansiblestack
+         region: "{{region}}"
+         register: keyout
+
+     - name: copy pem file content
+        copy:
+          content: "{{keyout.key.private_key}}"
+          path: "./bastion.pem"
+          mode: 0600
+        when: keyout.changed
+
+     - name : create bastion host security group
+       ec2_group:
+         name: bastionSG
+         description: bastion host SG for allowing port 22 from my IP
+         region: "{{region}}"
+         vpc_id: "{{vpcid}}"
+         subnet_id: "{{public_ip}}"
+         rules:
+           proto: tcp
+           from_port: 22
+           to_port: 22
+           cidr_ip : "{{MYIP}}"
+         register: bastionOutput
+
+     - name: create bastion instance
+       ec2:
+         key: bastionHost
+         region: "{{region}}"
+         vpc_id: "{{vpcid}}"
+         vpc_subnet_id: "{{public_ip}}"
+         image: "{{ami-bastion}}"
+         instance_type: t2.micro
+         wait: yes
+         wait_timeout: 300
+         instance_tags:
+           name: bastionhost
+           env: dev
+         exact_count: 1
+         count_tags:
+           name: bastionhost
+           env: dev
+         security_group: "{{bastionOutput.group_id}}"
+       register: bastionInstance
+
+
+
+
+
+
