@@ -37,7 +37,7 @@
 
      - name: create bastion instance
        ec2:
-         key_name: bastionHost
+         key_name: ansiblestack
          region: "{{region}}"
          instance_type: t2.micro
          image: ami-01e7ca2ef94a0ae86
