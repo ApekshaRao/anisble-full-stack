@@ -1,5 +1,6 @@
 ---
--- host: localhost
+-  name: creating bastion host for testing
+   hosts: localhost
    connection: local
    gather_facts: no
    tasks:
