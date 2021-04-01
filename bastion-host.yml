@@ -5,7 +5,7 @@
    gather_facts: no
    tasks:
      - name: import variable file for bastion host creation
-       import_variable: vars/bastion-var
+       include_vars: vars/bastion-var
 
      - name: create ec2 key pair
        ec2_key:
