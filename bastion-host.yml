@@ -11,7 +11,7 @@
        ec2_key:
          name: ansiblestack
          region: "{{region}}"
-         register: keyout
+       register: keyout
 
      - name: copy pem file content
        copy:
@@ -32,7 +32,7 @@
            from_port: 22
            to_port: 22
            cidr_ip : "{{MYIP}}"
-         register: bastionOutput
+       register: bastionOutput
 
      - name: create bastion instance
        ec2:
