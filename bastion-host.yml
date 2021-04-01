@@ -18,7 +18,7 @@
           content: "{{keyout.key.private_key}}"
           path: "./bastion.pem"
           mode: 0600
-        when: keyout.changed
+       when: keyout.changed
 
      - name : create bastion host security group
        ec2_group:
