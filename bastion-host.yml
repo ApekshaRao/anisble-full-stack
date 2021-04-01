@@ -16,7 +16,7 @@
      - name: copy pem file content
        copy:
           content: "{{keyout.key.private_key}}"
-          path: "./bastion.pem"
+          dest: "./bastion.pem"
           mode: 0600
        when: keyout.changed
 
