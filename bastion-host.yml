@@ -26,7 +26,6 @@
          description: bastion host SG for allowing port 22 from my IP
          region: "{{region}}"
          vpc_id: "{{vpcid}}"
-         subnet_id: "{{public_ip}}"
          rules:
            proto: tcp
            from_port: 22
