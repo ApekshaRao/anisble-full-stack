@@ -38,7 +38,7 @@
          key: bastionHost
          region: "{{region}}"
          vpc_id: "{{vpcid}}"
-         image: "{{ami-bastion}}"
+         image: "{{ ami-bastion }}"
          instance_type: t2.micro
          wait: yes
          wait_timeout: 300
