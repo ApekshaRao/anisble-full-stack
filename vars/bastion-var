@@ -1,5 +1,5 @@
 region: us-east-2
-vpc_id: vpc-047a9b92203de6efd
+vpcid: vpc-047a9b92203de6efd
 public_ip: subnet-026284a03cee57883
 ami-bastion: ami-01e7ca2ef94a0ae86
 MYIP: 1.22.150.179/32
